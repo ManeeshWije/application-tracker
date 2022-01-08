@@ -1,28 +1,31 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.2",
-    "mongoose": "^6.1.5",
-    "passport": "^0.5.2"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
-  "name": "application-tracker",
-  "version": "1.0.0",
-  "main": "server.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ManeeshWije/application-tracker.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ManeeshWije/application-tracker/issues"
-  },
-  "homepage": "https://github.com/ManeeshWije/application-tracker#readme",
-  "description": ""
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.2",
+		"mongoose": "^6.1.5",
+		"passport": "^0.5.2"
+	},
+	"scripts": {
+		"start": "node server.js",
+		"devStart": "nodemon server.js"
+	},
+	"name": "application-tracker",
+	"version": "1.0.0",
+	"main": "server.js",
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ManeeshWije/application-tracker.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ManeeshWije/application-tracker/issues"
+	},
+	"homepage": "https://github.com/ManeeshWije/application-tracker#readme",
+	"description": ""
 }

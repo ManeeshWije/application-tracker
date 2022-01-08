@@ -8,7 +8,7 @@ const applicationSchema = new Schema(
 		position: { type: String, require: true },
 		description: { type: String, require: true },
 		status: { type: String, require: true },
-		dateApplied: { type: Date, require: true },
+		dateApplied: { type: String, require: true },
 	},
 	{
 		timestamps: true,
