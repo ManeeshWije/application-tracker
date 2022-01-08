@@ -6,8 +6,12 @@ const cors = require("cors");
 require("dotenv").config();
 const Application = require("./models/Application");
 
+//if we use passport
+//const passport = require('passport');
+//const LocalStrategy = require('passport-local');
+//passport.initialize();
+
 //Middleware
-//to parse body
 app.use(express.json());
 app.use(cors());
 
