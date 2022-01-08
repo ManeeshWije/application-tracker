@@ -3,15 +3,18 @@ import { useState, useEffect } from "react";
 const API = "http://localhost:3001";
 
 export default function HomeApps() {
-	const [companyName, setCompanyName] = useState("");
-	const [status, setStatus] = useState("");
+	// const [companyName, setCompanyName] = useState("");
+	// const [status, setStatus] = useState("");
+	const [application, setApplication] = useState([]);
 
 	const getApplications = () => {
 		fetch(API + "/applications")
 			.then((res) => {
-				setCompanyName(res.data.companyName);
-				setStatus(res.data.status);
+				// setCompanyName(res.data.companyName);
+				// setStatus(res.data.status);
+				res.json();
 			})
+			.then((data) => setApplication(data))
 			.catch((err) => console.error(err));
 	};
 
@@ -20,17 +23,18 @@ export default function HomeApps() {
 	}, []);
 
 	return (
-		<div>
+		<div className="container">
 			<>
-				<button
-					onClick={() => {
-						window.location = "/AddApplication";
-					}}
-				>
-					Add New Application
-				</button>
-				<h1>Company: {companyName} </h1>
-				<h1>Status: {status} </h1>
+				<div className="container">
+					<button
+						className="btn btn-info mt-3"
+						onClick={() => {
+							window.location = "/AddApplication";
+						}}
+					>
+						Add New Application
+					</button>
+				</div>
 			</>
 		</div>
 	);

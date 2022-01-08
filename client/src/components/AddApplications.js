@@ -9,7 +9,7 @@ export default function AddApplications() {
 	const [companyName, setCompanyName] = useState("");
 	const [description, setDescription] = useState("");
 	const [position, setPosition] = useState("");
-	const [dateApplied, setDateApplied] = useState("");
+	const [dateApplied, setDateApplied] = useState(new Date()); //sets default date as today
 	const [status, setStatus] = useState("");
 
 	function handleCompanyChange(e) {
@@ -25,6 +25,11 @@ export default function AddApplications() {
 	function handlePositionChange(e) {
 		e.preventDefault();
 		setPosition(e.target.value);
+	}
+
+	function handleStatusChange(e) {
+		e.preventDefault();
+		setStatus(e.target.value);
 	}
 
 	function handleDateChange(date) {
@@ -57,14 +62,32 @@ export default function AddApplications() {
 			<div className="container mt-5">
 				<form>
 					<label>Company Name:</label> <br></br>
-					<input onChange={handleCompanyChange} value={companyName} type="text" className="form-control"></input> <br></br>
+					<input onChange={handleCompanyChange} value={companyName} type="text" required className="form-control"></input> <br></br>
 					<label>Position:</label> <br></br>
-					<input onChange={handlePositionChange} value={position} type="text" className="form-control"></input> <br></br>
+					<input onChange={handlePositionChange} value={position} type="text" required className="form-control"></input> <br></br>
 					<label>Description:</label> <br></br>
-					<input onChange={handleDescriptionChange} value={description} type="text" className="form-control"></input> <br></br>
+					{/* <input onChange={handleDescriptionChange} value={description} type="text" className="form-control"></input> <br></br> */}
+					<textarea onChange={handleDescriptionChange} value={description} rows="4" required className="form-control"></textarea> <br></br>
 					<label>Date Applied:</label>
-					<DatePicker className="form-control" onChange={handleDateChange} selected={dateApplied} />
-					<button id="addButton" className="btn btn-outline-success" type="button" onSubmit={createApplication}>
+					<DatePicker className="form-control" onChange={handleDateChange} selected={dateApplied} required />
+					<label>Status: </label> <br></br>
+					<select id="status" onChange={handleStatusChange}>
+						<option value="Accepted">Accepted</option>
+						<option value="Waiting for interview">Waiting for interview</option>
+						<option value="Scheduled interview">Scheduled interview</option>
+						<option value="Rejected">Rejected</option>
+					</select>
+					<br></br>
+					<button
+						id="addButton"
+						className="btn btn-info"
+						type="button"
+						onClick={() => {
+							{
+								createApplication();
+							}
+						}}
+					>
 						Add Application
 					</button>
 				</form>

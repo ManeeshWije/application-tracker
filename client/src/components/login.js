@@ -22,7 +22,7 @@ function Login() {
 
 	return (
 		<React.Fragment>
-			<div className="login container mt-5">
+			<div className="login container mt-5 align-items-center">
 				<form>
 					<label>Username:</label> <br></br>
 					<input onChange={onUsernameChange} type="text" className="form-control"></input> <br></br>
