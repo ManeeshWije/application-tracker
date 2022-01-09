@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../index.css";
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -21,14 +22,14 @@ export default function HomeApps() {
 	}, []);
 
 	const statusColour = (status) => {
-		if (status === "Waiting for interview") {
-			return "grey";
+		if (status === "Applied") {
+			return "LightSlateGrey";
 		} else if (status === "Accepted") {
 			return "green";
 		} else if (status === "Rejected") {
-			return "Tomato";
-		} else if (status === "Accepted for interview") {
-			return "yellow";
+			return "red";
+		} else if (status === "Scheduled Interview") {
+			return "orange";
 		}
 	};
 
@@ -57,15 +58,13 @@ export default function HomeApps() {
 
 					{applications.map((a) => (
 						<tr key={a._id} className="home-apps">
-							{/* <th>{a.companyName}</th>
+							<th>{a.companyName}</th>
 							<th>{a.position}</th>
-							<th style={{ backgroundColor: statusColour(a.status) }}>{a.status}</th> */}
+							<th style={{ color: statusColour(a.status) }}>{a.status}</th>
 							<td>
-								<button style={{ marginLeft: "2px", padding: "4px", borderRadius: "5px" }}>
+								<button type="button" className="btn btn-outline-secondary">
 									<Link to={"/Details/" + a._id} style={{ color: "black", textDecoration: "none" }}>
-										<th>{a.companyName}</th>
-										<th>{a.position}</th>
-										<th style={{ backgroundColor: statusColour(a.status) }}>{a.status}</th>
+										Details
 									</Link>
 								</button>
 							</td>

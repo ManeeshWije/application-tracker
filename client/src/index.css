@@ -11,3 +11,13 @@
 #addButton {
 	margin-top: 5%;
 }
+
+.button {
+	border-radius: 5px;
+	width: 60%;
+	transition: 0.6s;
+}
+
+.button:hover {
+	opacity: 0.6;
+}

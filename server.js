@@ -6,14 +6,38 @@ const cors = require("cors");
 require("dotenv").config();
 const Application = require("./models/Application");
 
-//if we use passport
+//Passport stuff
+//const passport = require("passport");
+//const passportLocal = require("passport-local").strategy;
+//const cookieParser = require("cookie-parser");
+//const bcrypt = require("bcryptjs");
+//const session = require("express-session");
 //const passport = require('passport');
 //const LocalStrategy = require('passport-local');
 //passport.initialize();
 
-//Middleware
+//---------------------------Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+	cors({
+		origin: "http://localhost:3000", //Location of the react app we connect to
+		credentials: true,
+	})
+);
+/*
+stuff for passport but commented so does mess u guys up for now
+app.use(
+	session({
+		secret: "secretcode",
+		resave: true,
+		saveUnitialized: true,
+	})
+);
+app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
+*/
 
 mongoose
 	.connect(process.env.MONGODB_URI, {
@@ -22,6 +46,40 @@ mongoose
 	})
 	.then(() => console.log("connected to DB"))
 	.catch(console.error);
+
+//----------------------routes
+/*
+//login route
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+        console.log(req.user);
+      });
+    }
+  })(req, res, next);
+});
+app.post("/register", (req, res) => {
+  User.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("User Already Exists");
+    if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      const newUser = new User({
+        username: req.body.username,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      res.send("User Created");
+    }
+  });
+});
+*/
 
 app.get("/applications", async (req, res) => {
 	const application = await Application.find();
@@ -34,35 +92,25 @@ app.post("/application/new", (req, res) => {
 		position: req.body.position,
 		description: req.body.description,
 		status: req.body.status,
-		// dateApplied: Date.parse(req.body.dateApplied),
-		dateApplied: req.body.dateApplied,
+		dateApplied: Date.parse(req.body.dateApplied),
 	});
-	//just to see
-	//console.log(application);
 	application.save();
-	// application
-	// 	.save()
-	// 	.then(() => res.json("application added!"))
-	// 	.catch((err) => res.status(400).json("Error: " + err));
 });
 
 app.put("/application/edit/:id", async (req, res) => {
-	const { id } = req.params;
-	const application = await Application.findByIdAndUpdate(id, { ...req.body.application });
-	//await Application.findByIdAndUpdate(id, {})
-	res.send("poop test edit");
+	const application = await Application.findByIdAndUpdate(req.params.id);
+	application.save();
+	res.json(application);
 });
 
 app.get("/application/Details/:id", async (req, res) => {
 	const application = await Application.findById(req.params.id);
-	console.log(application);
 	res.json(application);
 });
 
 app.delete("/application/delete/:id", async (req, res) => {
-	const { id } = req.params;
-	await Application.findByIdAndDelete(id);
-	res.send("poop delete");
+	const application = await Application.findByIdAndDelete(req.params.id);
+	res.json(application);
 });
 
 app.listen(PORT, () => {
