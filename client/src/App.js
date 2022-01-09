@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import HomeApps from "./components/HomeApps";
 import Nav from "./components/Nav";
 import AddApplications from "./components/AddApplications";
+import Details from "./components/Details";
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 					<Route exact path="/" element={<HomeApps />}></Route>
 					<Route exact path="/login" element={<Login />}></Route>
 					<Route exact path="/AddApplication" element={<AddApplications />}></Route>
-					<Route exact path="/Details:id" element={<AddApplications />}></Route>
+					<Route exact path="/Details/:id" element={<Details />}></Route>
 				</Routes>
 			</Router>
 		</div>

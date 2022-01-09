@@ -20,6 +20,18 @@ export default function HomeApps() {
 		getApplications();
 	}, []);
 
+	const statusColour = (status) => {
+		if (status === "Waiting for interview") {
+			return "grey";
+		} else if (status === "Accepted") {
+			return "green";
+		} else if (status === "Rejected") {
+			return "Tomato";
+		} else if (status === "Accepted for interview") {
+			return "yellow";
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<div className="m-3">
@@ -45,13 +57,15 @@ export default function HomeApps() {
 
 					{applications.map((a) => (
 						<tr key={a._id} className="home-apps">
-							<th>{a.companyName}</th>
+							{/* <th>{a.companyName}</th>
 							<th>{a.position}</th>
-							<th>{a.status}</th>
+							<th style={{ backgroundColor: statusColour(a.status) }}>{a.status}</th> */}
 							<td>
 								<button style={{ marginLeft: "2px", padding: "4px", borderRadius: "5px" }}>
-									<Link to={"/application/Details/" + a._id} style={{ color: "black", textDecoration: "none" }}>
-										Details
+									<Link to={"/Details/" + a._id} style={{ color: "black", textDecoration: "none" }}>
+										<th>{a.companyName}</th>
+										<th>{a.position}</th>
+										<th style={{ backgroundColor: statusColour(a.status) }}>{a.status}</th>
 									</Link>
 								</button>
 							</td>
