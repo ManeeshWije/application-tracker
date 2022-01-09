@@ -1,7 +1,8 @@
 import "./index.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
+// import Login from "./components/Login";
+import Login from "../src/components/Login";
 import HomeApps from "./components/HomeApps";
 import Nav from "./components/Nav";
 import AddApplications from "./components/AddApplications";

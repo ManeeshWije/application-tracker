@@ -21,7 +21,7 @@ export default function Details() {
 	const getApplication = () => {
 		let path = window.location.pathname;
 		axios
-			.get(API2 + "/application" + path)
+			.get(API + "/application" + path)
 			.then((response) => {
 				setApplications(response.data);
 				setCompanyName(response.data.companyName);
@@ -34,7 +34,7 @@ export default function Details() {
 	};
 
 	const deleteApplication = async (id) => {
-		await fetch(API2 + "/application/delete/" + id, { method: "DELETE" }).then((response) => {
+		await fetch(API + "/application/delete/" + id, { method: "DELETE" }).then((response) => {
 			response.json();
 		});
 		goBack();
