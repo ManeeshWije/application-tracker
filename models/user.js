@@ -1,8 +1,17 @@
-//model we finna use for auth
 const mongoose = require("mongoose");
-const user = new mongoose.Schema({
-	username: String,
-	password: String,
-});
 
-module.exports = mongoose.model("User", user);
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema(
+	{
+		username: { type: String, require: true },
+		password: { type: String, require: true },
+	},
+	{
+		timestamps: true,
+	}
+);
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

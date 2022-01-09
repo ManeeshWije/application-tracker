@@ -65,7 +65,7 @@ export default function AddApplications() {
 					<label>Company Name:</label> <br></br>
 					<input onChange={handleCompanyChange} value={companyName} type="text" required className="form-control"></input> <br></br>
 					<label>Position:</label> <br></br>
-					<input onChange={handlePositionChange} value={position} type="text" required className="form-control"></input> <br></br>
+					<input required onChange={handlePositionChange} value={position} type="text" className="form-control"></input> <br></br>
 					<label>Description:</label> <br></br>
 					<textarea onChange={handleDescriptionChange} value={description} rows="4" required className="form-control"></textarea> <br></br>
 					<label>Date Applied:</label>

@@ -21,3 +21,22 @@
 .button:hover {
 	opacity: 0.6;
 }
+
+.title {
+	position: absolute;
+	left: 1%;
+}
+
+#title {
+	margin: 1%;
+}
+
+#loginTitle {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}
+
+#registerLink {
+	color: black;
+}

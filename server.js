@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 require("dotenv").config();
 const Application = require("./models/Application");
+const User = require("./models/User");
 
 //Passport stuff
 //const passport = require("passport");
@@ -18,12 +19,13 @@ const Application = require("./models/Application");
 
 //---------------------------Middleware
 app.use(express.json());
-app.use(
-	cors({
-		origin: "http://localhost:3000", //Location of the react app we connect to
-		credentials: true,
-	})
-);
+app.use(cors());
+// app.use(
+// 	cors({
+// 		origin: "http://localhost:3000", //Location of the react app we connect to
+// 		credentials: true,
+// 	})
+// );
 /*
 stuff for passport but commented so does mess u guys up for now
 app.use(
@@ -80,6 +82,17 @@ app.post("/register", (req, res) => {
   });
 });
 */
+
+app.post("/api/register", (req, res) => {
+	const user = new User({
+		username: req.body.username,
+		password: req.body.password,
+	});
+	user.save();
+	res.json(user);
+});
+
+app.post("/api/login", (req, res) => {});
 
 app.get("/applications", async (req, res) => {
 	const application = await Application.find();
