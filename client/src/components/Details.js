@@ -41,7 +41,7 @@ export default function Details() {
 	};
 
 	const updateStatus = async (id) => {
-		const data = await fetch(API2 + "/application/edit/" + id, {
+		const data = await fetch(API + "/application/edit/" + id, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

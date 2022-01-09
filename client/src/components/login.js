@@ -24,7 +24,7 @@ export default function Login() {
 
 	const getLogin = () => {
 		axios
-			.get(API2 + "/api/login")
+			.get(API + "/api/login")
 			.then((response) => {
 				for (let i = 0; i < response.data.length; i++) {
 					console.log(response.data[i].username);

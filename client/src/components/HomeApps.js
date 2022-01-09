@@ -11,7 +11,7 @@ export default function HomeApps() {
 
 	const getApplications = () => {
 		axios
-			.get(API2 + "/applications")
+			.get(API + "/applications")
 			.then((response) => {
 				setApplications(response.data);
 			})

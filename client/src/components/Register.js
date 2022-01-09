@@ -24,7 +24,7 @@ export default function Register() {
 		if (username.length === 0 || password.length === 0) {
 			window.alert("Must fill credentials");
 		} else {
-			fetch(API2 + "/api/register", {
+			fetch(API + "/api/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

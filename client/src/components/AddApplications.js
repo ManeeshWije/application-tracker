@@ -41,7 +41,7 @@ export default function AddApplications() {
 	}
 
 	const createApplication = async () => {
-		await fetch(API2 + "/application/new", {
+		await fetch(API + "/application/new", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
