@@ -11,7 +11,7 @@ const User = require("./models/User");
 //---------------------------Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use(express.static(path.join(__dirname, "client", "build")));
 
 mongoose
 	.connect(process.env.MONGODB_URI, {
@@ -72,9 +72,9 @@ app.delete("/application/delete/:id", async (req, res) => {
 	res.json(application);
 });
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(PORT, () => {
 	console.log(`App listening on port ${PORT}`);
