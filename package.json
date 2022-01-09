@@ -31,5 +31,8 @@
 		"url": "https://github.com/ManeeshWije/application-tracker/issues"
 	},
 	"homepage": "https://github.com/ManeeshWije/application-tracker#readme",
-	"description": ""
+	"description": "A clean and elegant way to track your job applications",
+  "engines": {
+    "node": "17.3.0" 
+  }
 }
