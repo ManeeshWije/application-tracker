@@ -10,7 +10,7 @@ export default function AddApplications() {
 	const [description, setDescription] = useState("");
 	const [position, setPosition] = useState("");
 	const [dateApplied, setDateApplied] = useState(new Date()); //sets default date as today
-	const [status, setStatus] = useState("");
+	const [status, setStatus] = useState("N/A");
 
 	function handleCompanyChange(e) {
 		e.preventDefault();
@@ -50,11 +50,8 @@ export default function AddApplications() {
 				dateApplied: dateApplied,
 			}),
 		}).then((res) => {
-			console.log(res);
 			res.json();
 		});
-		console.log(data);
-		// setApplications([...applications, data]);
 	};
 
 	return (
@@ -71,7 +68,8 @@ export default function AddApplications() {
 					<label>Date Applied:</label>
 					<DatePicker className="form-control" onChange={handleDateChange} selected={dateApplied} required />
 					<label>Status: </label> <br></br>
-					<select id="status" onChange={handleStatusChange}>
+					<select selected={status} id="status" onChange={handleStatusChange}>
+						<option value="N/A">Choose an option</option>
 						<option value="Accepted">Accepted</option>
 						<option value="Waiting for interview">Waiting for interview</option>
 						<option value="Scheduled interview">Scheduled interview</option>
@@ -83,9 +81,7 @@ export default function AddApplications() {
 						className="btn btn-info"
 						type="button"
 						onClick={() => {
-							{
-								createApplication();
-							}
+							createApplication();
 						}}
 					>
 						Add Application

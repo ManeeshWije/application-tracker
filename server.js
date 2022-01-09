@@ -24,8 +24,6 @@ mongoose
 	.catch(console.error);
 
 app.get("/applications", async (req, res) => {
-	//  Application(deadlines => dateAppliedn(deadlines))
-	//     .catchapplicationses.status(400rpplicationsror: ' + err));
 	const application = await Application.find();
 	res.json(application);
 });
@@ -55,6 +53,12 @@ app.put("/application/edit/:id", async (req, res) => {
 	res.send("poop test edit");
 });
 
+app.get("/application/Details/:id", async (req, res) => {
+	const application = await Application.findById(req.params.id);
+	console.log(application);
+	res.json(application);
+});
+
 app.delete("/application/delete/:id", async (req, res) => {
 	const { id } = req.params;
 	await Application.findByIdAndDelete(id);
@@ -62,5 +66,5 @@ app.delete("/application/delete/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log(`Example app listening at http://localhost:${PORT}`);
+	console.log(`App listening at http://localhost:${PORT}`);
 });

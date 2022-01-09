@@ -23,7 +23,7 @@ function Login() {
 	return (
 		<React.Fragment>
 			<div className="login container mt-5 align-items-center">
-				<form>
+				<form className="border border-3 border-dark p-5 rounded shadow-lg">
 					<label>Username:</label> <br></br>
 					<input onChange={onUsernameChange} type="text" className="form-control"></input> <br></br>
 					<label>Password:</label> <br></br>
