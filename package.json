@@ -12,7 +12,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"devStart": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
 	},
 	"name": "application-tracker",
 	"version": "1.0.0",
@@ -32,7 +32,7 @@
 	},
 	"homepage": "https://github.com/ManeeshWije/application-tracker#readme",
 	"description": "A clean and elegant way to track your job applications",
-  "engines": {
-    "node": "17.3.0" 
-  }
+	"engines": {
+		"node": "17.3.0"
+	}
 }

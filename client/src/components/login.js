@@ -5,7 +5,7 @@ import axios from "axios";
 const API = "http://localhost:3001";
 const API2 = "https://track-job-applications.herokuapp.com";
 
-function Login() {
+export default function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	let counter = 0;
@@ -62,5 +62,3 @@ function Login() {
 		</React.Fragment>
 	);
 }
-
-export default Login;
