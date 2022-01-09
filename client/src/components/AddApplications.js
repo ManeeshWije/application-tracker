@@ -3,6 +3,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const API = "http://localhost:3001";
+const API2 = "https://track-job-applications.herokuapp.com";
 
 export default function AddApplications() {
 	const [companyName, setCompanyName] = useState("");
@@ -40,7 +41,7 @@ export default function AddApplications() {
 	}
 
 	const createApplication = async () => {
-		await fetch(API + "/application/new", {
+		await fetch(API2 + "/application/new", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -4,13 +4,14 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 const API = "http://localhost:3001";
+const API2 = "https://track-job-applications.herokuapp.com";
 
 export default function HomeApps() {
 	const [applications, setApplications] = useState([]);
 
 	const getApplications = () => {
 		axios
-			.get(API + "/applications")
+			.get(API2 + "/applications")
 			.then((response) => {
 				setApplications(response.data);
 			})

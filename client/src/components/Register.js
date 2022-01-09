@@ -2,6 +2,7 @@ import "../index.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const API = "http://localhost:3001";
+const API2 = "https://track-job-applications.herokuapp.com";
 
 export default function Register() {
 	const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ export default function Register() {
 		if (username.length === 0 || password.length === 0) {
 			window.alert("Must fill credentials");
 		} else {
-			fetch(API + "/api/register", {
+			fetch(API2 + "/api/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

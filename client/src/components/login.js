@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 const API = "http://localhost:3001";
+const API2 = "https://track-job-applications.herokuapp.com";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ function Login() {
 
 	const getLogin = () => {
 		axios
-			.get(API + "/api/login")
+			.get(API2 + "/api/login")
 			.then((response) => {
 				for (let i = 0; i < response.data.length; i++) {
 					console.log(response.data[i].username);

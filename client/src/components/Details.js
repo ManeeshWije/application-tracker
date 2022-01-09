@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 const API = "http://localhost:3001";
+const API2 = "https://track-job-applications.herokuapp.com";
 
 export default function Details() {
 	const [applications, setApplications] = useState([]);
@@ -20,7 +21,7 @@ export default function Details() {
 	const getApplication = () => {
 		let path = window.location.pathname;
 		axios
-			.get(API + "/application" + path)
+			.get(API2 + "/application" + path)
 			.then((response) => {
 				setApplications(response.data);
 				setCompanyName(response.data.companyName);
@@ -33,14 +34,14 @@ export default function Details() {
 	};
 
 	const deleteApplication = async (id) => {
-		await fetch(API + "/application/delete/" + id, { method: "DELETE" }).then((response) => {
+		await fetch(API2 + "/application/delete/" + id, { method: "DELETE" }).then((response) => {
 			response.json();
 		});
 		goBack();
 	};
 
 	const updateStatus = async (id) => {
-		const data = await fetch(API + "/application/edit/" + id, {
+		const data = await fetch(API2 + "/application/edit/" + id, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
