@@ -10,8 +10,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"devStart": "nodemon server.js",
-		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-		"heroku-prebuild": "npm install --only=dev"
+		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
 	},
 	"name": "application-tracker",
 	"version": "1.0.0",
