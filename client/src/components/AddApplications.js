@@ -12,7 +12,7 @@ export default function AddApplications() {
 	const [status, setStatus] = useState("N/A");
 
 	const goBack = () => {
-		window.location = "/";
+		window.location = "/homeapps";
 	};
 
 	function handleCompanyChange(e) {

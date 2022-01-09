@@ -20,18 +20,24 @@ export default function Register() {
 	}
 
 	const register = () => {
-		fetch(API + "/api/register", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				username: username,
-				password: password,
-			}),
-		}).then((response) => {
-			response.json();
-		});
+		if (username.length === 0 || password.length === 0) {
+			window.alert("Must fill credentials");
+		} else {
+			fetch(API + "/api/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					username: username,
+					password: password,
+				}),
+			}).then((response) => {
+				response.json();
+			});
+
+			window.alert("Success");
+		}
 	};
 
 	return (
@@ -43,8 +49,10 @@ export default function Register() {
 					<label>Password:</label> <br></br>
 					<input onChange={onPasswordChange} required type="password" className="form-control"></input> <br></br>
 					<button className="btn btn-outline-success" onClick={() => register()}>
-						{/* <Link to="/login">Register</Link> */}
 						Register
+					</button>
+					<button id="alreadyRegistered" className="btn btn-link">
+						<Link to="/">Already Registered?</Link>
 					</button>
 				</form>
 			</div>

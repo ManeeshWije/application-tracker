@@ -14,7 +14,7 @@ export default function Details() {
 	const [status, setStatus] = useState("N/A");
 
 	const goBack = () => {
-		window.location = "/";
+		window.location = "/homeapps";
 	};
 
 	const getApplication = () => {

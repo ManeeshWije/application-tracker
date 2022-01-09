@@ -1,11 +1,13 @@
 import "../index.css";
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const API = "http://localhost:3001";
 
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	let counter = 0;
 
 	function onUsernameChange(e) {
 		e.preventDefault();
@@ -20,7 +22,21 @@ function Login() {
 	}
 
 	const getLogin = () => {
-		fetch(API + "/api/login").then((response) => response.json());
+		axios
+			.get(API + "/api/login")
+			.then((response) => {
+				for (let i = 0; i < response.data.length; i++) {
+					console.log(response.data[i].username);
+					if (response.data[i].username === username) {
+						if (response.data[i].password === password) {
+							window.location = "/homeapps";
+							counter = 1;
+						}
+					}
+				}
+				if (counter !== 1) window.alert("Invalid Credentials");
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (
@@ -32,7 +48,7 @@ function Login() {
 					<label>Password:</label> <br></br>
 					<input onChange={onPasswordChange} type="password" className="form-control"></input> <br></br>
 					<div className="d-flex justify-content-center">
-						<button className="btn btn-outline-success" type="button">
+						<button className="btn btn-outline-success" type="button" onClick={() => getLogin()}>
 							Log in
 						</button>
 					</div>

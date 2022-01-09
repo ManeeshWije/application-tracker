@@ -13,12 +13,12 @@ export default function Nav() {
 				<div className="justify-content-center" id="navbarNav">
 					<ul className="nav justify-content-center navbar-nav mx-auto nav-tabs">
 						<li className="nav-item mx-2">
-							<Link className="nav-link" to="/">
+							<Link className="nav-link" to="/homeapps">
 								Home
 							</Link>
 						</li>
 						<li className="nav-item mx-2">
-							<Link className="nav-link" to="/login">
+							<Link className="nav-link" to="/">
 								Logout
 							</Link>
 						</li>
