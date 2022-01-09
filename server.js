@@ -97,10 +97,15 @@ app.post("/application/new", (req, res) => {
 	application.save();
 });
 
-app.put("/application/edit/:id", async (req, res) => {
-	const application = await Application.findByIdAndUpdate(req.params.id);
-	application.save();
-	res.json(application);
+app.post("/application/edit/:id", (req, res) => {
+	Application.findById(req.params.id)
+		.then((app) => {
+			app.status = req.body.status;
+			app.save()
+				.then(() => res.json(app))
+				.catch((err) => res.status(400).json("Error: " + err));
+		})
+		.catch((err) => res.status(400).json("Error: " + err));
 });
 
 app.get("/application/Details/:id", async (req, res) => {

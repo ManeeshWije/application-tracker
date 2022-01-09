@@ -7,8 +7,11 @@ const API = "http://localhost:3001";
 
 export default function Details() {
 	const [applications, setApplications] = useState([]);
+	const [companyName, setCompanyName] = useState("");
+	const [description, setDescription] = useState("");
+	const [position, setPosition] = useState("");
 	const [dateApplied, setDateApplied] = useState(new Date()); //sets default date as today
-	const [status, setStatus] = useState("");
+	const [status, setStatus] = useState("N/A");
 
 	const goBack = () => {
 		window.location = "/";
@@ -20,6 +23,9 @@ export default function Details() {
 			.get(API + "/application" + path)
 			.then((response) => {
 				setApplications(response.data);
+				setCompanyName(response.data.companyName);
+				setDescription(response.data.description);
+				setPosition(response.data.position);
 				setDateApplied(new Date(response.data.dateApplied));
 				setStatus(response.data.status);
 			})
@@ -35,7 +41,7 @@ export default function Details() {
 
 	const updateStatus = async (id) => {
 		const data = await fetch(API + "/application/edit/" + id, {
-			method: "PUT",
+			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -62,11 +68,11 @@ export default function Details() {
 			<div className="container mt-5">
 				<form>
 					<label>Company Name:</label> <br></br>
-					<input value={applications.companyName} type="text" readOnly required className="form-control"></input> <br></br>
+					<input value={companyName} type="text" readOnly required className="form-control"></input> <br></br>
 					<label>Position:</label> <br></br>
-					<input value={applications.position} type="text" required readOnly className="form-control"></input> <br></br>
+					<input value={position} type="text" required readOnly className="form-control"></input> <br></br>
 					<label>Description:</label> <br></br>
-					<textarea value={applications.description} rows="4" required readOnly className="form-control"></textarea> <br></br>
+					<textarea value={description} rows="4" required readOnly className="form-control"></textarea> <br></br>
 					<label>Date Applied:</label>
 					<DatePicker className="form-control" readOnly selected={dateApplied} required />
 					<label>Status: </label> <br></br>
