@@ -1,5 +1,5 @@
 import "../index.css";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const API = "http://localhost:3001";
 
@@ -29,8 +29,8 @@ export default function Register() {
 				username: username,
 				password: password,
 			}),
-		}).then((res) => {
-			res.json();
+		}).then((response) => {
+			response.json();
 		});
 	};
 
@@ -39,11 +39,12 @@ export default function Register() {
 			<div className="login container mt-5 align-items-center">
 				<form className="border border-3 border-dark p-5 rounded shadow-lg">
 					<label>Username:</label> <br></br>
-					<input onChange={onUsernameChange} type="text" className="form-control"></input> <br></br>
+					<input onChange={onUsernameChange} required type="text" className="form-control"></input> <br></br>
 					<label>Password:</label> <br></br>
-					<input onChange={onPasswordChange} type="password" className="form-control"></input> <br></br>
-					<button className="btn btn-outline-success" type="button" onClick={() => register()}>
-						<Link to="/login">Register</Link>
+					<input onChange={onPasswordChange} required type="password" className="form-control"></input> <br></br>
+					<button className="btn btn-outline-success" onClick={() => register()}>
+						{/* <Link to="/login">Register</Link> */}
+						Register
 					</button>
 				</form>
 			</div>

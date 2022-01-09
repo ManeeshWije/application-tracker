@@ -1,11 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const API = "http://localhost:3001";
 
 export default function AddApplications() {
-	const [applications, setApplications] = useState([]);
 	const [companyName, setCompanyName] = useState("");
 	const [description, setDescription] = useState("");
 	const [position, setPosition] = useState("");

@@ -92,7 +92,13 @@ app.post("/api/register", (req, res) => {
 	res.json(user);
 });
 
-app.post("/api/login", (req, res) => {});
+app.get("/api/login", (req, res) => {
+	const user = User.findOne({
+		username: req.body.username,
+		password: req.body.password,
+	});
+	res.json(user);
+});
 
 app.get("/applications", async (req, res) => {
 	const application = await Application.find();
