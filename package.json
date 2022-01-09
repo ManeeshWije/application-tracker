@@ -9,9 +9,8 @@
 	},
 	"scripts": {
 		"start": "node server.js",
-		"build": "cd client && npm install && npm run build",
 		"devStart": "nodemon server.js",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
 	},
 	"name": "application-tracker",
 	"version": "1.0.0",
